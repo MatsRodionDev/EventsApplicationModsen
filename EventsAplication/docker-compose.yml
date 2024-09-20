@@ -31,6 +31,7 @@ services:
       - ASPNETCORE_HTTP_PORTS=5001
     depends_on:
       - eventsapp.db
+      - redis
     networks:
       - eventsapp.db
       - redis
