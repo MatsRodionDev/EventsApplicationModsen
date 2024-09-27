@@ -1,7 +1,7 @@
 ﻿using EventsApplication.Application.Common.Dto;
 using EventsApplication.Application.Common.Interfaces.Queues;
 using EventsApplication.Application.Common.Interfaces.Services;
-using EventsApplication.Application.Common.Interfaces.UnitOfWork;
+using EventsApplication.Domain.Interfaces.UnitOfWork;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;

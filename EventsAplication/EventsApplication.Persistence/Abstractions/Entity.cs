@@ -1,4 +1,4 @@
-﻿using EventsApplication.Application.Common.Interfaces.Entity;
+﻿using EventsApplication.Domain.Interfaces.Entity;
 
 namespace EventsApplication.Persistence.Abstractions
 {

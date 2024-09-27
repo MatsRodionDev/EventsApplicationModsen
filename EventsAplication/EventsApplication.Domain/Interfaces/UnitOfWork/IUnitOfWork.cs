@@ -1,6 +1,6 @@
-﻿using EventsApplication.Application.Common.Interfaces.Repositories;
+﻿using EventsApplication.Domain.Interfaces.Repositories;
 
-namespace EventsApplication.Application.Common.Interfaces.UnitOfWork
+namespace EventsApplication.Domain.Interfaces.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {

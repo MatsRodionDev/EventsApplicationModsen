@@ -1,5 +1,5 @@
-﻿using EventsApplication.Application.Common.Interfaces.Repositories;
-using EventsApplication.Application.Common.Interfaces.UnitOfWork;
+﻿using EventsApplication.Domain.Interfaces.Repositories;
+using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Persistence.Profiles;
 using EventsApplication.Persistence.Repositories;
 using EventsApplication.Persistence.UnitOfWorkApp;

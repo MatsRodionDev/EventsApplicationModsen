@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using EventsApplication.Application.Common.Interfaces.Queues;
-using EventsApplication.Application.Common.Interfaces.Repositories;
-using EventsApplication.Application.Common.Interfaces.UnitOfWork;
+using EventsApplication.Domain.Interfaces.Repositories;
+using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Application.Common.Profiles;
 using EventsApplication.Application.Events.Commands.UpdateEvent;
 using EventsApplication.Domain.Exceptions;

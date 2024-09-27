@@ -1,7 +1,7 @@
-﻿using EventsApplication.Application.Common.Interfaces.Entity;
+﻿using EventsApplication.Domain.Interfaces.Entity;
 using EventsApplication.Domain.Models;
 
-namespace EventsApplication.Application.Common.Interfaces.Repositories
+namespace EventsApplication.Domain.Interfaces.Repositories
 {
     public interface IUserRepository : IGenericRepository<IEntity, User>
     {

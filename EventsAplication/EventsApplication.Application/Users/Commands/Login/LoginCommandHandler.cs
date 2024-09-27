@@ -1,7 +1,7 @@
 ﻿using EventsApplication.Application.Common;
 using EventsApplication.Application.Common.Interfaces.Hashers;
 using EventsApplication.Application.Common.Interfaces.Services;
-using EventsApplication.Application.Common.Interfaces.UnitOfWork;
+using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Options;
