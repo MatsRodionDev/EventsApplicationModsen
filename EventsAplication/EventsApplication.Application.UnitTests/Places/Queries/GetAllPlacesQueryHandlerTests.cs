@@ -3,6 +3,7 @@ using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Models;
 using Moq;
 using EventsApplication.Application.UseCases.Handlers.Queries.Places;
+using EventsApplication.Application.UseCases.Queries.Places;
 
 namespace EventsApplication.Application.UnitTests.Places.Queries
 {

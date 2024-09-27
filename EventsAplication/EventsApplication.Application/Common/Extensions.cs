@@ -1,4 +1,4 @@
-﻿namespace EventsApplication.Application.Events.Commands
+﻿namespace EventsApplication.Application.Common
 {
     public static class Extensions
     {

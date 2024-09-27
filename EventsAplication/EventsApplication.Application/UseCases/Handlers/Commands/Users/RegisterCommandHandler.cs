@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using EventsApplication.Application.UseCases.Commands.Users;
 
 
-namespace EventsApplication.Application.Users.Commands.Register
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Users
 {
     public class RegisterCommandHandler : IRequestHandler<RegisterCommand>
     {
@@ -39,7 +39,7 @@ namespace EventsApplication.Application.Users.Commands.Register
         {
             var user = await _unitOfWork.UserReporsitory.GetUserByEmailAsync(request.Email, cancellationToken);
 
-            if(user is not null)
+            if (user is not null)
             {
                 throw new BadRequestException("User with such email already exist");
             }
@@ -65,7 +65,7 @@ namespace EventsApplication.Application.Users.Commands.Register
             await _emailService.InitializeAsync();
             var isSended = await _emailService.SendEmail(dto);
 
-            if(!isSended)
+            if (!isSended)
             {
                 await _emailService.Disconnect();
 

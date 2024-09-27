@@ -3,7 +3,7 @@ using EventsApplication.Domain.Exceptions;
 using MediatR;
 using EventsApplication.Application.UseCases.Commands.Subscriptions;
 
-namespace EventsApplication.Application.Subscriptions.Commands.DeleteSubscription
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Subscriptions
 {
     public class DeleteSubscriptionCommandHandler : IRequestHandler<DeleteSubscriptionCommand>
     {

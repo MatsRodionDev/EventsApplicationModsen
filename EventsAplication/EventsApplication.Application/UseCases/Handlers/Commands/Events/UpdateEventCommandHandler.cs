@@ -6,7 +6,7 @@ using EventsApplication.Domain.Models;
 using MediatR;
 using EventsApplication.Application.UseCases.Commands.Events;
 
-namespace EventsApplication.Application.Events.Commands.UpdateEvent
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Events
 {
     public class UpdateEventCommandHandler : IRequestHandler<UpdateEventCommand>
     {

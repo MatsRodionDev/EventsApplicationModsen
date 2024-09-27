@@ -8,7 +8,7 @@ using Microsoft.Extensions.Options;
 using EventsApplication.Application.Common.Dto;
 using EventsApplication.Application.UseCases.Commands.Users;
 
-namespace EventsApplication.Application.Users.Commands.Login
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Users
 {
     public class LoginCommandHandler : IRequestHandler<LoginCommand, TokenResponse>
     {
@@ -45,12 +45,12 @@ namespace EventsApplication.Application.Users.Commands.Login
                 CacheKeysProvider.GetRefreshTokenKey(user.Id),
                 cancellationToken);
 
-            if(refreshToken is not null)
+            if (refreshToken is not null)
             {
                 throw new BadRequestException("The email has already been logged in");
             }
 
-            if(!user.IsActivated)
+            if (!user.IsActivated)
             {
                 throw new BadRequestException("Account doesn't activated");
             }
@@ -66,9 +66,9 @@ namespace EventsApplication.Application.Users.Commands.Login
             var refreshKey = CacheKeysProvider.GetRefreshTokenKey(user.Id);
 
             await _cacheService.SetAsync(
-                refreshKey, 
-                newRefreshToken, 
-                TimeSpan.FromDays(_jwtOptions.RefreshTokenExpiresDays), 
+                refreshKey,
+                newRefreshToken,
+                TimeSpan.FromDays(_jwtOptions.RefreshTokenExpiresDays),
                 cancellationToken);
 
             return new TokenResponse(accesToken, newRefreshToken);

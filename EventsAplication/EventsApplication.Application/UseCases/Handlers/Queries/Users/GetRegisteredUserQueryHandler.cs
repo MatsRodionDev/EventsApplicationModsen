@@ -2,8 +2,9 @@
 using EventsApplication.Domain.Exceptions;
 using EventsApplication.Domain.Models;
 using MediatR;
+using EventsApplication.Application.UseCases.Queries.Users;
 
-namespace EventsApplication.Application.Users.Queries.GetRegisteredUser
+namespace EventsApplication.Application.UseCases.Handlers.Queries.Users
 {
     public class GetRegisteredUserQueryHandler : IRequestHandler<GetRegisteredUserQuery, User>
     {
@@ -19,7 +20,7 @@ namespace EventsApplication.Application.Users.Queries.GetRegisteredUser
         {
             var user = await _unitOfWork.UserReporsitory.GetByIdAsync(request.UserId, cancellationToken);
 
-            if(user is null)
+            if (user is null)
             {
                 throw new NotFoundException("User doesn't exist");
             }

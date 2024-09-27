@@ -4,7 +4,7 @@ using EventsApplication.Domain.Models;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 
-namespace EventsApplication.Application.Events.Queries.GetAll
+namespace EventsApplication.Application.UseCases.Handlers.Queries.Events
 {
     public class GetAllEventsQueryHandler : IRequestHandler<GetAllEventsQuery, List<Event>>
     {

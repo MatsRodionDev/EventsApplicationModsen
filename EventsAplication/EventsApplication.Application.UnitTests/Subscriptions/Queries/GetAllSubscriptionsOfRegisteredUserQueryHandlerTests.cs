@@ -1,9 +1,9 @@
 ﻿using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Domain.Interfaces.UnitOfWork;
-using EventsApplication.Application.Subscriptions.Queries.GetAllSubscriptionsOfRegisteredUser;
 using EventsApplication.Domain.Models;
 using Moq;
 using EventsApplication.Application.UseCases.Handlers.Queries.Subscriptions;
+using EventsApplication.Application.UseCases.Queries.Subscriptions;
 
 namespace EventsApplication.Application.UnitTests.Subscriptions.Queries
 {

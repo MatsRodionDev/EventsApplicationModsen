@@ -2,8 +2,9 @@
 using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Exceptions;
 using MediatR;
+using EventsApplication.Application.UseCases.Commands.Events;
 
-namespace EventsApplication.Application.Events.Commands.DeleteEventImage
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Events
 {
     public class DeleteEventImageCommandHandler : IRequestHandler<DeleteEventImageCommand>
     {
@@ -22,12 +23,12 @@ namespace EventsApplication.Application.Events.Commands.DeleteEventImage
         {
             var @event = await _unitOfWork.EventRepository.GetByIdAsync(request.EventId, cancellationToken);
 
-            if(@event is null) 
+            if (@event is null)
             {
                 throw new NotFoundException($"Event with id {request.EventId} doesn't exist");
             }
 
-            if(string.IsNullOrEmpty(@event.EventImageName))
+            if (string.IsNullOrEmpty(@event.EventImageName))
             {
                 throw new BadRequestException($"Event with id {request.EventId} doesn't have image");
             }

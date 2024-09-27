@@ -4,7 +4,7 @@ using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Models;
 using MediatR;
 
-namespace EventsApplication.Application.Places.Commands.CreatePlace
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Places
 {
     public class CreatePlaceCommandHandler : IRequestHandler<CreatePlaceCommand>
     {

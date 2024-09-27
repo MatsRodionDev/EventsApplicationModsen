@@ -1,15 +1,11 @@
 ﻿using AutoMapper;
 using EventsAplication.Api.Constants;
 using EventsAplication.Presentation.Dto;
-using EventsApplication.Presentation.Dto;
-using EventsApplication.Application.Places.Commands.DeletePlace;
-using EventsApplication.Application.Places.Commands.UpdatePlace;
-using EventsApplication.Application.Places.Queries.GetAll;
-using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using EventsApplication.Application.UseCases.Commands.Places;
+using EventsApplication.Application.UseCases.Queries.Places;
 
 namespace EventsApplication.Presentation.Controllers
 {

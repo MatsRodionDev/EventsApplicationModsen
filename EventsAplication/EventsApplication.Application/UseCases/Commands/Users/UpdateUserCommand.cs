@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EventsApplication.Application.Users.Commands.UpdateUser
+namespace EventsApplication.Application.UseCases.Commands.Users
 {
     public record UpdateUserCommand(
         Guid Id,

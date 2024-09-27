@@ -4,6 +4,7 @@ using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Models;
 using Moq;
 using EventsApplication.Application.UseCases.Handlers.Commands.Places;
+using EventsApplication.Application.UseCases.Commands.Places;
 
 namespace EventsApplication.Application.UnitTests.Places.Commands
 {

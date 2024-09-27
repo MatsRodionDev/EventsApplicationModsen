@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 
-namespace EventsApplication.Application.Events.Commands.UpdateEvent
+namespace EventsApplication.Application.UseCases.Commands.Events
 {
     public record UpdateEventCommand(
        Guid Id,

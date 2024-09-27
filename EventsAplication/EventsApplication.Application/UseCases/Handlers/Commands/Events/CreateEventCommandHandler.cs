@@ -5,7 +5,7 @@ using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Models;
 using MediatR;
 
-namespace EventsApplication.Application.Events.Commands.CreateEvent
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Events
 {
     public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand>
     {
@@ -28,7 +28,7 @@ namespace EventsApplication.Application.Events.Commands.CreateEvent
             var newEvent = _mapper.Map<Event>(request);
 
             newEvent.Id = Guid.NewGuid();
-             
+
             if (request.Image is not null && request.Image.Length > 0)
             {
                 newEvent.EventImageName = await _fileService.SaveFilesync(request.Image, newEvent.Id, cancellationToken);

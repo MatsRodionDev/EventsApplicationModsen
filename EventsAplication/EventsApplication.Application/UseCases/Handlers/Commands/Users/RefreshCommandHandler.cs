@@ -8,7 +8,7 @@ using EventsApplication.Domain.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Options;
 
-namespace EventsApplication.Application.Users.Commands.Refresh
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Users
 {
     public class RefreshCommandHandler : IRequestHandler<RefreshCommand, TokenResponse>
     {

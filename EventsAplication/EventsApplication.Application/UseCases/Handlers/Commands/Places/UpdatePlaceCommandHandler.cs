@@ -5,7 +5,7 @@ using EventsApplication.Domain.Models;
 using MediatR;
 using EventsApplication.Application.UseCases.Commands.Places;
 
-namespace EventsApplication.Application.Places.Commands.UpdatePlace
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Places
 {
     public class UpdatePlaceCommandHandler : IRequestHandler<UpdatePlaceCommand>
     {
@@ -24,7 +24,7 @@ namespace EventsApplication.Application.Places.Commands.UpdatePlace
         {
             var place = await _unitOfWork.PlaceRepository.GetByIdAsync(request.Id, cancellationToken);
 
-            if(place is null)
+            if (place is null)
             {
                 throw new NotFoundException($"Place with id {request.Id} doesn't exist");
             }

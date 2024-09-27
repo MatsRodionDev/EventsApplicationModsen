@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EventsApplication.Application.Users.Commands.Register
+namespace EventsApplication.Application.UseCases.Commands.Users
 {
     public record RegisterCommand(
         string Email,

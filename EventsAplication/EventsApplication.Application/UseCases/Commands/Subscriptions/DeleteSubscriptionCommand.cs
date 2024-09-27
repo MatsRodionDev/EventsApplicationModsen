@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EventsApplication.Application.Subscriptions.Commands.DeleteSubscription
+namespace EventsApplication.Application.UseCases.Commands.Subscriptions
 {
     public record DeleteSubscriptionCommand(
         Guid EventId,

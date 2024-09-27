@@ -4,6 +4,7 @@ using EventsApplication.Domain.Models;
 using Microsoft.Extensions.Configuration;
 using Moq;
 using EventsApplication.Application.UseCases.Handlers.Queries.Events;
+using EventsApplication.Application.UseCases.Queries.Events;
 
 namespace EventsApplication.Application.UnitTests.Events.Queries
 {

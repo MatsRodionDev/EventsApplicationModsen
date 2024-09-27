@@ -5,7 +5,7 @@ using EventsApplication.Domain.Models;
 using MediatR;
 using EventsApplication.Application.UseCases.Commands.Events;
 
-namespace EventsApplication.Application.Events.Commands.DeleteEvent
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Events
 {
     public class DeleteEventCommandHandler : IRequestHandler<DeleteEventCommand>
     {
@@ -24,12 +24,12 @@ namespace EventsApplication.Application.Events.Commands.DeleteEvent
         {
             var @event = await _unitOfWork.EventRepository.GetByIdAsync(request.EventId, cancellationToken);
 
-            if(@event is null)
+            if (@event is null)
             {
                 throw new NotFoundException($"Event with id {request.EventId} doesn't exist");
             }
 
-            if(!string.IsNullOrEmpty(@event.EventImageName))
+            if (!string.IsNullOrEmpty(@event.EventImageName))
             {
                 _fileService.Delete(@event.EventImageName);
             }

@@ -3,7 +3,7 @@ using EventsApplication.Application.Common.Interfaces.Services;
 using EventsApplication.Application.UseCases.Commands.Users;
 using MediatR;
 
-namespace EventsApplication.Application.Users.Commands.LogOut
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Users
 {
     public class LogOutCommandHandler : IRequestHandler<LogOutCommand>
     {

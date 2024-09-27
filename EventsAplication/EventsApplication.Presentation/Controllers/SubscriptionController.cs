@@ -2,10 +2,8 @@
 using EventsAplication.Api.Constants;
 using EventsAplication.Presentation.Dto;
 using EventsApplication.Application.Common.Interfaces.Providers;
-using EventsApplication.Application.Subscriptions.Commands.CreateSubscriptionForRegisteredUser;
-using EventsApplication.Application.Subscriptions.Commands.DeleteSubscription;
-using EventsApplication.Application.Subscriptions.Queries.GetAllSubscriptionsOfRegisteredUser;
-using EventsApplication.Application.Subscriptions.Queries.GetAllSubscriptionsWithUser;
+using EventsApplication.Application.UseCases.Commands.Subscriptions;
+using EventsApplication.Application.UseCases.Queries.Subscriptions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

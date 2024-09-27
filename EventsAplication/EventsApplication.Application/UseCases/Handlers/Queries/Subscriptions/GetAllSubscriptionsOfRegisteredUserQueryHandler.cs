@@ -1,8 +1,9 @@
-﻿using EventsApplication.Domain.Interfaces.UnitOfWork;
+﻿using EventsApplication.Application.UseCases.Queries.Subscriptions;
+using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Models;
 using MediatR;
 
-namespace EventsApplication.Application.Subscriptions.Queries.GetAllSubscriptionsOfRegisteredUser
+namespace EventsApplication.Application.UseCases.Handlers.Queries.Subscriptions
 {
     public class GetAllSubscriptionsOfRegisteredUserQueryHandler : IRequestHandler<GetAllSubscriptionsOfRegisteredUserQuery, List<EventSubscription>>
     {

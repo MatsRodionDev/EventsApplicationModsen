@@ -4,7 +4,7 @@ using EventsApplication.Domain.Models;
 using MediatR;
 using EventsApplication.Application.UseCases.Commands.Subscriptions;
 
-namespace EventsApplication.Application.Subscriptions.Commands.CreateSubscriptionForRegisteredUser
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Subscriptions
 {
     public class CreateSubscriptionForRegisteredUserCommandHandler : IRequestHandler<CreateSubscriptionForRegisteredUserCommand>
     {
@@ -20,7 +20,7 @@ namespace EventsApplication.Application.Subscriptions.Commands.CreateSubscriptio
         {
             var @event = await _unitOfWork.EventRepository.GetByIdAsync(request.EventId, cancellationToken);
 
-            if(@event is null)
+            if (@event is null)
             {
                 throw new NotFoundException($"Event with id {request.EventId} doesn't exist");
             }
@@ -37,11 +37,11 @@ namespace EventsApplication.Application.Subscriptions.Commands.CreateSubscriptio
 
             var subscrptionAmount = await _unitOfWork.EventSubscriptionRepository.GetSubscriptionCountAsync(request.EventId, cancellationToken);
 
-            if(subscrptionAmount >= @event.MaxParticipants)
+            if (subscrptionAmount >= @event.MaxParticipants)
             {
                 throw new BadRequestException($"Event with id {request.EventId} is full");
             }
-            
+
             var newSubscription = new EventSubscription
             {
                 UserId = request.UserId,
@@ -57,7 +57,7 @@ namespace EventsApplication.Application.Subscriptions.Commands.CreateSubscriptio
 
                 _unitOfWork.EventRepository.Update(@event);
             }
-            
+
 
             await _unitOfWork.SaveAsync(cancellationToken);
         }
