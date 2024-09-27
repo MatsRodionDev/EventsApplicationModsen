@@ -18,17 +18,11 @@ namespace EventsApplication.Presentation.Controllers
     public class PlaceController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IValidator<UpdatePlaceDto> _updatePlaceDtoValidator;
-        private readonly IValidator<CreatePlaceCommand> _createPlaceCommandValidator;
 
         public PlaceController(
-            IMediator mediator,
-            IValidator<CreatePlaceCommand> createPlaceCommandValidator,
-            IValidator<UpdatePlaceDto> updatePlaceDtoValidator)
+            IMediator mediator)
         {
             _mediator = mediator;
-            _createPlaceCommandValidator = createPlaceCommandValidator;
-            _updatePlaceDtoValidator = updatePlaceDtoValidator;
         }
 
         [HttpGet]
@@ -55,9 +49,7 @@ namespace EventsApplication.Presentation.Controllers
         [Authorize(Policy = Policies.Admin)]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePlaceAsync(Guid id, [FromBody] UpdatePlaceDto dto, CancellationToken cancellationToken)
-        {
-            await _updatePlaceDtoValidator.ValidateAndThrowAsync(dto, cancellationToken);
-
+        { 
             var command = new UpdatePlaceCommand(id, dto.Name);
 
             await _mediator.Send(command, cancellationToken);
@@ -69,8 +61,6 @@ namespace EventsApplication.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> CreatePlaceAsync([FromBody] CreatePlaceCommand command, CancellationToken cancellationToken)
         {
-            await _createPlaceCommandValidator.ValidateAndThrowAsync(command,cancellationToken);
-
             await _mediator.Send(command, cancellationToken);
 
             return NoContent();

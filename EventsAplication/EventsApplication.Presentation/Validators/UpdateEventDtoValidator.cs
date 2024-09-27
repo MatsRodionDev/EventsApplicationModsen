@@ -8,7 +8,7 @@ namespace EventsAplication.Presentation.Validators
     {
         public UpdateEventDtoValidator()
         {
-            RuleFor(e => e.Name)
+            RuleFor(e => e.Name).Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("Name is required.")
                 .Must(n => n.Length < 30).WithMessage("Name's length cannot exceed 30 characters");
 

@@ -25,10 +25,7 @@ namespace EventsAplication.Presentation.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
-        private readonly IValidator<LoginCommand> _loginValidator;
-        private readonly IValidator<RegisterCommand> _registerValidator;
         private readonly ICustomClaimsKeysProvider _customClaimsKeysProvider;
-        private readonly IValidator<UpdateUserDto> _updateUserDtoValidator;
 
         public UserController(
             IMediator mediator,
@@ -40,17 +37,12 @@ namespace EventsAplication.Presentation.Controllers
         {
             _mediator = mediator;
             _mapper = mapper;
-            _loginValidator = loginValidator;
-            _registerValidator = registerValidator;
             _customClaimsKeysProvider = customClaimsKeysProvider;
-            _updateUserDtoValidator = updateUserDtoValidator;
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginCommand command, CancellationToken cancellationToken)
         {
-            await _loginValidator.ValidateAndThrowAsync(command, cancellationToken);
-
             var tokens = await _mediator.Send(command, cancellationToken);
 
             Response.Cookies.Append("access", tokens.AccesToken);
@@ -63,8 +55,6 @@ namespace EventsAplication.Presentation.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterCommand command, CancellationToken cancellationToken)
         {
-            await _registerValidator.ValidateAndThrowAsync(command, cancellationToken);
-
             await _mediator.Send(command, cancellationToken);
 
             return Ok("Activated link was sended on your email");
@@ -105,8 +95,6 @@ namespace EventsAplication.Presentation.Controllers
         [HttpPatch]
         public async Task<IActionResult> UpdateUserAsync([FromBody] UpdateUserDto dto, CancellationToken cancellationToken)
         {
-            await _updateUserDtoValidator.ValidateAndThrowAsync(dto, cancellationToken);
-
             var userId = Guid.Parse(User.FindFirst(_customClaimsKeysProvider.UserId)!.Value);
 
             var command = new UpdateUserCommand(userId, dto.FirstName, dto.LastName);

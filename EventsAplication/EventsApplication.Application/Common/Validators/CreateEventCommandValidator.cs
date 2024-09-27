@@ -10,9 +10,10 @@ namespace EventsApplication.Application.Common.Handlers
         public CreateEventCommandValidator()
         {
             RuleFor(e => e.Name)
+                .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("Name is required.")
-                .Must(n => n.Length >= 4).WithMessage("Name's length has to be at least 4")
-                .Must(n => n.Length < 50).WithMessage("Name's length cannot exceed 50 characters");
+                .Must(n => n is not null && n.Length >= 4).WithMessage("Name's length has to be at least 4")
+                .Must(n => n is not null && n.Length < 50).WithMessage("Name's length cannot exceed 50 characters");
 
             RuleFor(e => e.EventTime)
                 .GreaterThan(DateTime.Now.AddHours(3))

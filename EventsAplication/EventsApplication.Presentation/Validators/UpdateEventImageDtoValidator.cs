@@ -9,6 +9,8 @@ namespace EventsAplication.Presentation.Validators
         public UpdateEventImageDtoValidator()
         {
             RuleFor(e => e.Image)
+                .Cascade(CascadeMode.Stop)
+                .NotNull().WithMessage("Image is required")
                 .Must(i => Extensions.ImageExt
                         .Contains(Path.GetExtension(i.FileName).ToLower()))
                 .WithMessage("Incorrect file extension");
