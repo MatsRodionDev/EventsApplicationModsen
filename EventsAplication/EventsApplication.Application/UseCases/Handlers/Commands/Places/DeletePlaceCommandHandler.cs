@@ -3,7 +3,7 @@ using EventsApplication.Domain.Exceptions;
 using MediatR;
 using EventsApplication.Application.UseCases.Commands.Places;
 
-namespace EventsApplication.Application.Places.Commands.DeletePlace
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Places
 {
     public class DeletePlaceCommandHandler : IRequestHandler<DeletePlaceCommand>
     {

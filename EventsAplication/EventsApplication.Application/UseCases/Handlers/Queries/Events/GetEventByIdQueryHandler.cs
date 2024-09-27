@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using EventsApplication.Application.UseCases.Queries.Events;
 
-namespace EventsApplication.Application.Events.Queries.GetById
+namespace EventsApplication.Application.UseCases.Handlers.Queries.Events
 {
     public class GetEventByIdQueryHandler : IRequestHandler<GetEventByIdQuery, Event>
     {
@@ -29,7 +29,7 @@ namespace EventsApplication.Application.Events.Queries.GetById
                 throw new NotFoundException($"Event with Id {request.EventId} didn't find");
             }
 
-            if(!string.IsNullOrEmpty(eventById.EventImageName))
+            if (!string.IsNullOrEmpty(eventById.EventImageName))
             {
                 eventById.ImageUrl = _configuration["BaseAppUrl:BaseUrl"] + $"/{eventById.EventImageName}";
             }

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EventsApplication.Application.Subscriptions.Commands.CreateSubscriptionForRegisteredUser
+namespace EventsApplication.Application.UseCases.Commands.Subscriptions
 {
     public record CreateSubscriptionForRegisteredUserCommand(
         Guid UserId,

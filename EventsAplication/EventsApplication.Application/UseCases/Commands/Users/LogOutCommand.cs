@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EventsApplication.Application.Users.Commands.LogOut
+namespace EventsApplication.Application.UseCases.Commands.Users
 {
-    public record LogOutCommand(Guid UserId) : IRequest; 
+    public record LogOutCommand(Guid UserId) : IRequest;
 }

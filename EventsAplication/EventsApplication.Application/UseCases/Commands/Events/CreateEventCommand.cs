@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 
-namespace EventsApplication.Application.Events.Commands.CreateEvent
+namespace EventsApplication.Application.UseCases.Commands.Events
 {
     public record CreateEventCommand(
         string Name,

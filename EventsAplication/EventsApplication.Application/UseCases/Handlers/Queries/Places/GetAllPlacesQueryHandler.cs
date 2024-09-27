@@ -3,7 +3,7 @@ using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Models;
 using MediatR;
 
-namespace EventsApplication.Application.Places.Queries.GetAll
+namespace EventsApplication.Application.UseCases.Handlers.Queries.Places
 {
     public class GetAllPlacesQueryHandler : IRequestHandler<GetAllPlacesQuery, List<Place>>
     {

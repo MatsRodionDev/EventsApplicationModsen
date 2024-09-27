@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EventsApplication.Application.Users.Commands.Activate
+namespace EventsApplication.Application.UseCases.Commands.Users
 {
-    public record ActivateCommand(Guid UserId): IRequest;
+    public record ActivateCommand(Guid UserId) : IRequest;
 }

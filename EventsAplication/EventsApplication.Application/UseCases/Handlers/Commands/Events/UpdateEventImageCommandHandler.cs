@@ -4,7 +4,7 @@ using EventsApplication.Domain.Exceptions;
 using MediatR;
 using EventsApplication.Application.UseCases.Commands.Events;
 
-namespace EventsApplication.Application.Events.Commands.UpdateEventImage
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Events
 {
     public class UpdateEventImageCommandHandler : IRequestHandler<UpdateEventImageCommand>
     {
@@ -23,16 +23,16 @@ namespace EventsApplication.Application.Events.Commands.UpdateEventImage
         {
             var @event = await _unitOfWork.EventRepository.GetByIdAsync(request.EventId, cancellationToken);
 
-            if(@event is null)
+            if (@event is null)
             {
                 throw new NotFoundException($"Event with id {request.EventId} doesn't exist");
             }
 
-            if(!string.IsNullOrEmpty(@event.EventImageName))
+            if (!string.IsNullOrEmpty(@event.EventImageName))
             {
                 _fileService.Delete(@event.EventImageName);
             }
-         
+
             var newImage = await _fileService.SaveFilesync(request.Image, request.EventId, cancellationToken);
 
             @event.EventImageName = newImage;

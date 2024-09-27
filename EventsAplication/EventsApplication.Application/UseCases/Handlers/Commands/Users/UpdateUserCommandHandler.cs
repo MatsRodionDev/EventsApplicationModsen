@@ -3,7 +3,7 @@ using EventsApplication.Domain.Exceptions;
 using MediatR;
 using EventsApplication.Application.UseCases.Commands.Users;
 
-namespace EventsApplication.Application.Users.Commands.UpdateUser
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Users
 {
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
     {
@@ -19,7 +19,7 @@ namespace EventsApplication.Application.Users.Commands.UpdateUser
         {
             var user = await _unitOfWork.UserReporsitory.GetByIdAsync(request.Id, cancellationToken);
 
-            if(user is null)
+            if (user is null)
             {
                 throw new NotFoundException($"User with id {request.Id} doesn't exist");
             }

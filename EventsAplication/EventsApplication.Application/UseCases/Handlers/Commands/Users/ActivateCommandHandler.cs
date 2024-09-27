@@ -1,9 +1,9 @@
 ﻿using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Exceptions;
 using MediatR;
-using EventsApplication.Application.UseCases.Handlers.Commands.Users;
+using EventsApplication.Application.UseCases.Commands.Users;
 
-namespace EventsApplication.Application.Users.Commands.Activate
+namespace EventsApplication.Application.UseCases.Handlers.Commands.Users
 {
     public class ActivateCommandHandler : IRequestHandler<ActivateCommand>
     {
@@ -19,12 +19,12 @@ namespace EventsApplication.Application.Users.Commands.Activate
         {
             var user = await _unitOfWork.UserReporsitory.GetByIdAsync(request.UserId, cancellationToken);
 
-            if(user is null)
+            if (user is null)
             {
                 throw new NotFoundException($"User with id {request.UserId} doesn't exist");
             }
 
-            if(user.IsActivated)
+            if (user.IsActivated)
             {
                 throw new BadRequestException($"User with id {request.UserId} already was activated ");
             }

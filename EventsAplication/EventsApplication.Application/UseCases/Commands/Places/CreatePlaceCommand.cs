@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace EventsApplication.Application.Places.Commands.CreatePlace
+namespace EventsApplication.Application.UseCases.Commands.Places
 {
     public record CreatePlaceCommand(string Name) : IRequest;
 }

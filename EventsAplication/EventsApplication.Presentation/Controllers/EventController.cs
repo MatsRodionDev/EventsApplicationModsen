@@ -2,19 +2,11 @@
 using EventsAplication.Api.Constants;
 using EventsAplication.Presentation.Dto;
 using EventsApplication.Presentation.Dto;
-using EventsApplication.Application.Events.Commands.DeleteEvent;
-using EventsApplication.Application.Events.Commands.DeleteEventImage;
-using EventsApplication.Application.Events.Commands.UpdateEvent;
-using EventsApplication.Application.Events.Commands.UpdateEventImage;
-using EventsApplication.Application.Events.Queries.GetAll;
-using EventsApplication.Application.Events.Queries.GetById;
-using EventsApplication.Application.Events.Queries.GetByName;
-using EventsApplication.Application.Events.Queries.GetByParameters;
-using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using EventsApplication.Application.UseCases.Commands.Events;
+using EventsApplication.Application.UseCases.Queries.Events;
 
 namespace EventsApplication.Presentation.Controllers
 {

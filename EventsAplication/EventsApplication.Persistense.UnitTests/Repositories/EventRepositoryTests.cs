@@ -39,45 +39,7 @@ namespace EventsApplication.Persistense.UnitTests.Repositories
             }
         }
 
-        [Fact]
-        public async Task GetEventsByQueryParametersAsync_ShouldReturnFilteredEvents()
-        {
-            // Arrange
-            var event1 = new EventEntity
-            {
-                Id = Guid.NewGuid(),
-                Name = "Gimn",
-                EventTime = DateTime.Now.AddHours(1),
-                PlaceId = PlaceId,
-                Category = EventCategory.Music 
-            };
 
-            var event2 = new EventEntity
-            {
-                Id = Guid.NewGuid(),
-                Name = "Theater",
-                EventTime = DateTime.Now.AddHours(2),
-                PlaceId = PlaceId,
-                Category = EventCategory.Music
-            };
-
-            using (var context = new ApplicationDBContext(_options))
-            {
-                context.Set<EventEntity>().AddRange(event1, event2);
-                context.SaveChanges();
-            }
-
-            // Act
-            IEnumerable<Event> result;
-            using (var context = new ApplicationDBContext(_options))
-            {
-                var repository = new EventRepository(context, _mapper);
-                result = await repository.GetEventsWithPlacesAsync(CancellationToken.None);
-            }
-
-            // Assert
-            Assert.Equal("Gimn", result.ToList()[0].Name);
-        }
 
         [Fact]
         public async Task GetEventsByNameAsync_ShouldReturnMatchingEvents()

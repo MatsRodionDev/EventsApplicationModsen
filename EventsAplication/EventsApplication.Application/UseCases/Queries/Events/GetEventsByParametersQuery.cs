@@ -2,7 +2,7 @@
 using EventsApplication.Domain.Models;
 using MediatR;
 
-namespace EventsApplication.Application.Events.Queries.GetByParameters
+namespace EventsApplication.Application.UseCases.Queries.Events
 {
     public record GetEventsByParametersQuery(
         DateTime? Date,

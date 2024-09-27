@@ -1,7 +1,7 @@
 ﻿using MediatR;
 
-namespace EventsApplication.Application.Events.Commands.DeleteEventImage
+namespace EventsApplication.Application.UseCases.Commands.Events
 {
     public record DeleteEventImageCommand(Guid EventId) : IRequest;
-    
+
 }

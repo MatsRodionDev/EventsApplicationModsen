@@ -6,6 +6,7 @@ using EventsApplication.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Moq;
 using EventsApplication.Application.UseCases.Handlers.Commands.Events;
+using EventsApplication.Application.UseCases.Commands.Events;
 
 namespace EventsApplication.Application.UnitTests.Events.Commands
 {

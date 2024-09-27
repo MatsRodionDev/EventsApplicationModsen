@@ -4,6 +4,7 @@ using EventsApplication.Domain.Exceptions;
 using EventsApplication.Domain.Models;
 using Moq;
 using EventsApplication.Application.UseCases.Handlers.Commands.Subscriptions;
+using EventsApplication.Application.UseCases.Commands.Subscriptions;
 
 namespace EventsApplication.Application.UnitTests.Subscriptions.Commands
 {
