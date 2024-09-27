@@ -1,7 +1,8 @@
-﻿using EventsApplication.Domain.Enums;
+﻿using EventsApplication.Application.Events.Queries.GetByParameters;
+using EventsApplication.Domain.Enums;
 using FluentValidation;
 
-namespace EventsApplication.Application.Events.Queries.GetByParameters
+namespace EventsApplication.Application.Common.Handlers
 {
     public class GetEventsByParametersQueryValidator : AbstractValidator<GetEventsByParametersQuery>
     {
