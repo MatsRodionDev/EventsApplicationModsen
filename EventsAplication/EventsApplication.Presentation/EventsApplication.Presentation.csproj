@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="FluentValidation" Version="11.10.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,15 +21,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-    <Folder Include="wwwroot\Uploads\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\EventsApplication.Application\EventsApplication.Application.csproj" />
     <ProjectReference Include="..\EventsApplication.Domain\EventsApplication.Domain.csproj" />
     <ProjectReference Include="..\EventsApplication.Infrastructure\EventsApplication.Infrastructure.csproj" />
     <ProjectReference Include="..\EventsApplication.Persistence\EventsApplication.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

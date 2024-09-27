@@ -14,10 +14,6 @@ namespace EventsApplication.Application.Common.DI
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
             services.AddAutoMapper(typeof(ApplicationProfile));
-
-            services.AddValidatorsFromAssemblyContaining(typeof(CreatePlaceCommand));
-
-            
         }
     }
 }

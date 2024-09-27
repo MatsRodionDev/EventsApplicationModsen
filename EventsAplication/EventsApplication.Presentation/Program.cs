@@ -10,17 +10,25 @@ using FluentValidation;
 using EventsAplication.Presentation.Validators;
 using EventsApplication.Infrastructure.Services;
 using EventsApplication.Presentation.Extensions;
+using FluentValidation.AspNetCore;
+using EventsApplication.Application.Common.Handlers;
+using EventsApplication.Presentation.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(nameof(JwtOptions)));
 builder.Services.Configure<EmailOptions>(builder.Configuration.GetSection(nameof(EmailOptions)));
 
-builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation()
+    .AddFluentValidationClientsideAdapters()
+    .AddValidatorsFromAssemblyContaining<UpdateEventDtoValidator>()
+    .AddValidatorsFromAssemblyContaining<CreateEventCommandValidator>();
+
+builder.Services.AddControllers(options => options.Filters
+    .Add(typeof(ValidationFilter)));
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddValidatorsFromAssemblyContaining(typeof(UpdateEventDtoValidator));
 
 builder.Services.AddAutoMapper(typeof(ApiProfile));
 

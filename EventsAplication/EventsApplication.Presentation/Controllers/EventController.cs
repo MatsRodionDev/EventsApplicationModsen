@@ -25,25 +25,13 @@ namespace EventsApplication.Presentation.Controllers
 
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
-        private readonly IValidator<GetEventsByParametersQuery> _getEventsByParametersQueryValidator;
-        private readonly IValidator<CreateEventCommand> _createEventCommandValidator;
-        private readonly IValidator<UpdateEventDto> _updateEventdtoValidator;
-        private readonly IValidator<UpdateEventImageDto> _updateEventImageDtoValidator;
 
         public EventController(
             IMapper mapper,
-            IMediator mediator,
-            IValidator<GetEventsByParametersQuery> getEventsByParametersQueryValidator,
-            IValidator<CreateEventCommand> createEventCommandValidator,
-            IValidator<UpdateEventDto> updateEventdtoValidator,
-            IValidator<UpdateEventImageDto> updateEventImageDtoValidator)
+            IMediator mediator)
         {
             _mapper = mapper;
             _mediator = mediator;
-            _getEventsByParametersQueryValidator = getEventsByParametersQueryValidator;
-            _createEventCommandValidator = createEventCommandValidator;
-            _updateEventdtoValidator = updateEventdtoValidator;
-            _updateEventImageDtoValidator = updateEventImageDtoValidator;
         }
 
         [HttpGet("all")]
@@ -61,8 +49,6 @@ namespace EventsApplication.Presentation.Controllers
         [HttpGet]
         public async Task<List<EventResponse>> GetEventsByParametersAsync([FromQuery] GetEventsByParametersQuery query, CancellationToken cancellationToken)
         {
-            await _getEventsByParametersQueryValidator.ValidateAndThrowAsync(query, cancellationToken);
-
             var events = await _mediator.Send(query, cancellationToken);
 
             var eventsResponse = _mapper.Map<List<EventResponse>>(events);
@@ -99,8 +85,6 @@ namespace EventsApplication.Presentation.Controllers
         [HttpPost]
         public async Task CreateEventAsync([FromForm] CreateEventCommand command, CancellationToken cancellationToken)
         {
-            await _createEventCommandValidator.ValidateAndThrowAsync(command, cancellationToken);
-
             await _mediator.Send(command, cancellationToken);
         }
 
@@ -108,8 +92,6 @@ namespace EventsApplication.Presentation.Controllers
         [HttpPut("id")]
         public async Task<IActionResult> UpdateEventAsync(Guid id, [FromBody] UpdateEventDto dto, CancellationToken cancellationToken)
         {
-            await _updateEventdtoValidator.ValidateAndThrowAsync(dto, cancellationToken);
-
             var command = new UpdateEventCommand(id, dto.Name, dto.Description, dto.EventTime, dto.PlaceId, dto.Category, dto.MaxParticipants);
 
             await _mediator.Send(command, cancellationToken);
@@ -132,8 +114,6 @@ namespace EventsApplication.Presentation.Controllers
         [HttpPatch("{id}/image")]
         public async Task<IActionResult> UpdateImageToEventAsync(Guid id, [FromForm] UpdateEventImageDto dto, CancellationToken cancellationToken)
         {
-            await _updateEventImageDtoValidator.ValidateAndThrowAsync(dto, cancellationToken);
-
             var command = new UpdateEventImageCommand(id, dto.Image);
 
             await _mediator.Send(command, cancellationToken);
