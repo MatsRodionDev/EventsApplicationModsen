@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EventsApplication.Application.Common.Interfaces.UnitOfWork;
+using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Exceptions;
 using EventsApplication.Domain.Models;
 using MediatR;

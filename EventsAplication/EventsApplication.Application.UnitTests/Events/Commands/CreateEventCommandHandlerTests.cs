@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using EventsApplication.Application.Common.Interfaces.Repositories;
+using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Application.Common.Interfaces.Services;
-using EventsApplication.Application.Common.Interfaces.UnitOfWork;
+using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Application.Events.Commands.CreateEvent;
 using EventsApplication.Domain.Models;
 using Microsoft.AspNetCore.Http;

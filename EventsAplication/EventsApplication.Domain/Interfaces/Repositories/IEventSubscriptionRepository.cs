@@ -1,8 +1,7 @@
-﻿using EventsApplication.Application.Common.Interfaces.Entity;
+﻿using EventsApplication.Domain.Interfaces.Entity;
 using EventsApplication.Domain.Models;
-using System.Threading.Tasks;
 
-namespace EventsApplication.Application.Common.Interfaces.Repositories
+namespace EventsApplication.Domain.Interfaces.Repositories
 {
     public interface IEventSubscriptionRepository : IGenericRepository<IEntity, EventSubscription>
     {

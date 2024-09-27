@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using EventsApplication.Application.Events.Queries.GetByParameters;
 using EventsApplication.Domain.Enums;
 using EventsApplication.Domain.Models;
 using EventsApplication.Persistence.Entities;
@@ -68,19 +67,16 @@ namespace EventsApplication.Persistense.UnitTests.Repositories
                 context.SaveChanges();
             }
 
-            var query = new GetEventsByParametersQuery(null, null, null, "Gimn", 10, 1);
-
             // Act
-            List<Event> result;
+            IEnumerable<Event> result;
             using (var context = new ApplicationDBContext(_options))
             {
                 var repository = new EventRepository(context, _mapper);
-                result = await repository.GetEventsByQueryParametersAsync(query, CancellationToken.None);
+                result = await repository.GetEventsWithPlacesAsync(CancellationToken.None);
             }
 
             // Assert
-            Assert.Single(result);
-            Assert.Equal("Gimn", result[0].Name);
+            Assert.Equal("Gimn", result.ToList()[0].Name);
         }
 
         [Fact]

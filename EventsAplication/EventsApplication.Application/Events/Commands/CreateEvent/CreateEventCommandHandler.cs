@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using EventsApplication.Application.Common.Interfaces.Services;
-using EventsApplication.Application.Common.Interfaces.UnitOfWork;
+using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Models;
 using MediatR;
 

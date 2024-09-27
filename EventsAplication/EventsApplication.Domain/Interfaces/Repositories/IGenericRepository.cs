@@ -1,6 +1,6 @@
-﻿using EventsApplication.Application.Common.Interfaces.Entity;
+﻿using EventsApplication.Domain.Interfaces.Entity;
 
-namespace EventsApplication.Application.Common.Interfaces.Repositories
+namespace EventsApplication.Domain.Interfaces.Repositories
 {
     public interface IGenericRepository<TEntity, TModel>
         where TEntity : IEntity

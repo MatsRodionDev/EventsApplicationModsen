@@ -1,4 +1,4 @@
-﻿namespace EventsApplication.Application.Common.Interfaces.Entity
+﻿namespace EventsApplication.Domain.Interfaces.Entity
 {
     public interface IEntity
     {

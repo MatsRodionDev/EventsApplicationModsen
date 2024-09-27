@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using Azure.Core;
-using EventsApplication.Application.Common.Interfaces.Repositories;
-using EventsApplication.Application.Events.Queries.GetByParameters;
+using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Domain.Models;
 using EventsApplication.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -15,43 +13,14 @@ namespace EventsApplication.Persistence.Repositories
 
         }
 
-        public async Task<List<Event>> GetEventsByQueryParametersAsync(GetEventsByParametersQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Event>> GetEventsWithPlacesAsync(CancellationToken cancellationToken)
         {
-            var eventQuery = _dbSet
+            var eventsEntities = await _dbSet
                 .AsNoTracking() 
                 .Include(e => e.EventPlace) 
-                .AsQueryable();
-
-            if(request.PlaceId != null)
-            {
-                eventQuery = eventQuery
-                    .Where(e => e.PlaceId == request.PlaceId);
-            }
-
-            if(request.Category != null)
-            {
-                eventQuery = eventQuery
-                    .Where(e => e.Category == request.Category);
-            }
-
-            if (request.Date is not null)
-            {
-                eventQuery = eventQuery
-                    .Where(e => e.EventTime.Date == request.Date);
-            }
-
-            if (!string.IsNullOrEmpty(request.Name))
-            {
-                eventQuery = eventQuery.Where(e => e.Name.ToLower().Contains(request.Name.ToLower()));
-            }
-
-            var eventsEntities = await eventQuery
-                .OrderByDescending(e => e.EventTime)
-                .Skip((request.PageNumber - 1) * request.PageSize)
-                .Take(request.PageSize)
                 .ToListAsync(cancellationToken);
 
-            return _mapper.Map<List<Event>>(eventsEntities);
+            return _mapper.Map<IEnumerable<Event>>(eventsEntities);
         }
 
         public async Task<List<Event>> GetEventsByNameAsync(string name, CancellationToken cancellationToken)

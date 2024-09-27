@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EventsApplication.Application.Common.Interfaces.Repositories;
+using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Persistence.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
