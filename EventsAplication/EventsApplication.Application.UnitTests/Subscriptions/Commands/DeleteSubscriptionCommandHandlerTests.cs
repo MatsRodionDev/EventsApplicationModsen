@@ -1,9 +1,9 @@
 ﻿using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Domain.Interfaces.UnitOfWork;
-using EventsApplication.Application.Subscriptions.Commands.DeleteSubscription;
 using EventsApplication.Domain.Exceptions;
 using EventsApplication.Domain.Models;
 using Moq;
+using EventsApplication.Application.UseCases.Handlers.Commands.Subscriptions;
 
 namespace EventsApplication.Application.UnitTests.Subscriptions.Commands
 {

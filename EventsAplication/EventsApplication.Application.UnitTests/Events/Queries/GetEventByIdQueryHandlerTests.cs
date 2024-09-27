@@ -1,10 +1,10 @@
 ﻿using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Domain.Interfaces.UnitOfWork;
-using EventsApplication.Application.Events.Queries.GetById;
 using EventsApplication.Domain.Exceptions;
 using EventsApplication.Domain.Models;
 using Microsoft.Extensions.Configuration;
 using Moq;
+using EventsApplication.Application.UseCases.Handlers.Queries.Events;
 
 namespace EventsApplication.Application.UnitTests.Events.Queries
 {

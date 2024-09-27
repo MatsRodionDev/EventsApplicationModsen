@@ -1,4 +1,4 @@
-﻿using EventsApplication.Application.Users.Commands.Register;
+﻿using EventsApplication.Application.UseCases.Commands.Users;
 using FluentValidation;
 
 namespace EventsApplication.Application.Common.Handlers

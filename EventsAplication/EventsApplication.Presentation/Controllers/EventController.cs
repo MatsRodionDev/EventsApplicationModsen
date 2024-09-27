@@ -2,7 +2,6 @@
 using EventsAplication.Api.Constants;
 using EventsAplication.Presentation.Dto;
 using EventsApplication.Presentation.Dto;
-using EventsApplication.Application.Events.Commands.CreateEvent;
 using EventsApplication.Application.Events.Commands.DeleteEvent;
 using EventsApplication.Application.Events.Commands.DeleteEventImage;
 using EventsApplication.Application.Events.Commands.UpdateEvent;
@@ -15,6 +14,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using EventsApplication.Application.UseCases.Commands.Events;
 
 namespace EventsApplication.Presentation.Controllers
 {

@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using EventsApplication.Application.Events.Commands.CreateEvent;
-using EventsApplication.Application.Events.Commands.UpdateEvent;
-using EventsApplication.Application.Places.Commands.CreatePlace;
-using EventsApplication.Application.Places.Commands.UpdatePlace;
-using EventsApplication.Application.Users.Commands.Register;
+using EventsApplication.Application.UseCases.Commands.Events;
+using EventsApplication.Application.UseCases.Commands.Places;
+using EventsApplication.Application.UseCases.Commands.Users;
 using EventsApplication.Domain.Enums;
 using EventsApplication.Domain.Models;
 

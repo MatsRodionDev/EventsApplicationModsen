@@ -1,4 +1,4 @@
-﻿using EventsApplication.Application.Events.Queries.GetByParameters;
+﻿using EventsApplication.Application.UseCases.Queries.Events;
 using EventsApplication.Domain.Enums;
 using FluentValidation;
 

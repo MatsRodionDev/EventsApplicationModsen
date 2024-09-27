@@ -1,4 +1,4 @@
-﻿using EventsApplication.Application.Places.Commands.CreatePlace;
+﻿using EventsApplication.Application.UseCases.Commands.Places;
 using FluentValidation;
 
 namespace EventsApplication.Application.Common.Handlers
