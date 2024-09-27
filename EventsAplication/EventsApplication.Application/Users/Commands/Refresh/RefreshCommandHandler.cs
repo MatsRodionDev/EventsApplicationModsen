@@ -1,4 +1,5 @@
 ﻿using EventsApplication.Application.Common;
+using EventsApplication.Application.Common.Dto;
 using EventsApplication.Application.Common.Interfaces.Providers;
 using EventsApplication.Application.Common.Interfaces.Services;
 using EventsApplication.Domain.Enums;

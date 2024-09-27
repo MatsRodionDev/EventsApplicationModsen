@@ -1,6 +1,7 @@
-﻿using FluentValidation;
+﻿using EventsApplication.Application.Users.Commands.Register;
+using FluentValidation;
 
-namespace EventsApplication.Application.Users.Commands.Register
+namespace EventsApplication.Application.Common.Handlers
 {
     public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
     {

@@ -5,6 +5,7 @@ using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Exceptions;
 using MediatR;
 using Microsoft.Extensions.Options;
+using EventsApplication.Application.Common.Dto;
 
 namespace EventsApplication.Application.Users.Commands.Login
 {

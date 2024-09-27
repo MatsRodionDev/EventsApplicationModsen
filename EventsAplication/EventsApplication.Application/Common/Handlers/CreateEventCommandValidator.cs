@@ -1,7 +1,9 @@
-﻿using EventsApplication.Domain.Enums;
+﻿using EventsApplication.Application.Events.Commands;
+using EventsApplication.Application.Events.Commands.CreateEvent;
+using EventsApplication.Domain.Enums;
 using FluentValidation;
 
-namespace EventsApplication.Application.Events.Commands.CreateEvent
+namespace EventsApplication.Application.Common.Handlers
 {
     public class CreateEventCommandValidator : AbstractValidator<CreateEventCommand>
     {
@@ -24,8 +26,8 @@ namespace EventsApplication.Application.Events.Commands.CreateEvent
                 .WithMessage("MaxParticipants has to be at least 1");
 
             RuleFor(e => e.Image)
-                .Must(i => i is null 
-                    || i.Length == 0 
+                .Must(i => i is null
+                    || i.Length == 0
                     || Extensions.ImageExt
                         .Contains(Path.GetExtension(i.FileName).ToLower()))
                 .WithMessage("Incorrect file extension");

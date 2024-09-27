@@ -1,6 +1,7 @@
-﻿using FluentValidation;
+﻿using EventsApplication.Application.Places.Commands.CreatePlace;
+using FluentValidation;
 
-namespace EventsApplication.Application.Places.Commands.CreatePlace
+namespace EventsApplication.Application.Common.Handlers
 {
     public class CreatePlaceCommandValidator : AbstractValidator<CreatePlaceCommand>
     {
