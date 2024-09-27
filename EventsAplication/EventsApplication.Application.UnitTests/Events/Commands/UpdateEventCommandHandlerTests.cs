@@ -3,10 +3,10 @@ using EventsApplication.Application.Common.Interfaces.Queues;
 using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Application.Common.Profiles;
-using EventsApplication.Application.Events.Commands.UpdateEvent;
 using EventsApplication.Domain.Exceptions;
 using EventsApplication.Domain.Models;
 using Moq;
+using EventsApplication.Application.UseCases.Handlers.Commands.Events;
 
 namespace EventsApplication.Application.UnitTests.Events.Commands
 {

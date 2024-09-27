@@ -1,6 +1,6 @@
 ﻿using EventsAplication.Presentation.Dto;
 using FluentValidation;
-using EventsApplication.Application.Events.Commands;
+using EventsApplication.Application.Common;
 
 namespace EventsAplication.Presentation.Validators
 {

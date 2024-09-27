@@ -1,9 +1,9 @@
 ﻿using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Domain.Interfaces.UnitOfWork;
-using EventsApplication.Application.Places.Commands.DeletePlace;
 using EventsApplication.Domain.Exceptions;
 using EventsApplication.Domain.Models;
 using Moq;
+using EventsApplication.Application.UseCases.Handlers.Commands.Places;
 
 namespace EventsApplication.Application.UnitTests.Places.Commands
 {

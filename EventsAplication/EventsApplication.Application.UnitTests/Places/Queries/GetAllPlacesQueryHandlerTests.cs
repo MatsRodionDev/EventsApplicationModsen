@@ -1,8 +1,8 @@
 ﻿using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Domain.Interfaces.UnitOfWork;
-using EventsApplication.Application.Places.Queries.GetAll;
 using EventsApplication.Domain.Models;
 using Moq;
+using EventsApplication.Application.UseCases.Handlers.Queries.Places;
 
 namespace EventsApplication.Application.UnitTests.Places.Queries
 {

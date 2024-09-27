@@ -1,11 +1,11 @@
 ﻿using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Application.Common.Interfaces.Services;
 using EventsApplication.Domain.Interfaces.UnitOfWork;
-using EventsApplication.Application.Events.Commands.UpdateEventImage;
 using EventsApplication.Domain.Exceptions;
 using EventsApplication.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Moq;
+using EventsApplication.Application.UseCases.Handlers.Commands.Events;
 
 namespace EventsApplication.Application.UnitTests.Events.Commands
 {

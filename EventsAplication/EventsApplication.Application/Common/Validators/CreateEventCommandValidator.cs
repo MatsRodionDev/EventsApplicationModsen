@@ -1,5 +1,5 @@
 ﻿using EventsApplication.Application.Events.Commands;
-using EventsApplication.Application.Events.Commands.CreateEvent;
+using EventsApplication.Application.UseCases.Commands.Events;
 using EventsApplication.Domain.Enums;
 using FluentValidation;
 
