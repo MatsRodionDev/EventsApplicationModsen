@@ -23,10 +23,7 @@ namespace EventsAplication.Presentation.Controllers
         public UserController(
             IMediator mediator,
             IMapper mapper,
-            IValidator<LoginCommand> loginValidator,
-            IValidator<RegisterCommand> registerValidator,
-            ICustomClaimsKeysProvider customClaimsKeysProvider,
-            IValidator<UpdateUserDto> updateUserDtoValidator)
+            ICustomClaimsKeysProvider customClaimsKeysProvider)
         {
             _mediator = mediator;
             _mapper = mapper;
