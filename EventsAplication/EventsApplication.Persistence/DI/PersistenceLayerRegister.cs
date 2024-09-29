@@ -1,4 +1,5 @@
-﻿using EventsApplication.Domain.Interfaces.Repositories;
+﻿using AutoMapper.Extensions.ExpressionMapping;
+using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Persistence.Profiles;
 using EventsApplication.Persistence.Repositories;
@@ -23,7 +24,8 @@ namespace EventsApplication.Persistence.DI
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            services.AddAutoMapper(typeof(PersistenceProfile));
+            services.AddAutoMapper(cfg =>
+                cfg.AddExpressionMapping(), typeof(PersistenceProfile));
         }
     }
 }

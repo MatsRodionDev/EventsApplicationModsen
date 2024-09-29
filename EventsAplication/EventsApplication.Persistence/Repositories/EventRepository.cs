@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using EventsApplication.Domain.Interfaces.Repositories;
 using EventsApplication.Domain.Models;
 using EventsApplication.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace EventsApplication.Persistence.Repositories
 {
@@ -13,14 +16,24 @@ namespace EventsApplication.Persistence.Repositories
 
         }
 
-        public async Task<IEnumerable<Event>> GetEventsWithPlacesAsync(CancellationToken cancellationToken)
+        public async Task<List<Event>> GetEventsWithPlacesByExpressionAsync(
+            Expression<Func<Event, bool>> predicate,
+            int pageSize,
+            int pageNumber,
+            CancellationToken cancellationToken)
         {
+            var entityExp = _mapper.Map<Expression<Func<EventEntity, bool>>>(predicate);
+
             var eventsEntities = await _dbSet
                 .AsNoTracking() 
-                .Include(e => e.EventPlace) 
+                .Include(e => e.EventPlace)
+                .Where(entityExp)
+                .OrderByDescending(e => e.EventTime)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync(cancellationToken);
 
-            return _mapper.Map<IEnumerable<Event>>(eventsEntities);
+            return _mapper.Map<List<Event>>(eventsEntities);
         }
 
         public async Task<List<Event>> GetEventsByNameAsync(string name, CancellationToken cancellationToken)

@@ -1,8 +1,10 @@
 ﻿using EventsApplication.Application.UseCases.Queries.Events;
+using EventsApplication.Domain.Enums;
 using EventsApplication.Domain.Interfaces.UnitOfWork;
 using EventsApplication.Domain.Models;
 using MediatR;
 using Microsoft.Extensions.Configuration;
+using System.Linq.Expressions;
 
 namespace EventsApplication.Application.UseCases.Handlers.Queries.Events
 {
@@ -21,35 +23,31 @@ namespace EventsApplication.Application.UseCases.Handlers.Queries.Events
 
         public async Task<List<Event>> Handle(GetEventsByParametersQuery request, CancellationToken cancellationToken)
         {
-            var events = await _unitOfWork.EventRepository.GetEventsWithPlacesAsync(cancellationToken);
+            var name = request.Name.ToLower();
+            Expression<Func<Event, bool>> predicate = e => e.Name.ToLower().Contains(name);
 
             if (request.PlaceId != null)
             {
-                events = events
-                    .Where(e => e.PlaceId == request.PlaceId);
+                predicate = GetNewExpression(predicate, e => e.PlaceId == request.PlaceId);
             }
 
             if (request.Category != null)
             {
-                events = events
-                    .Where(e => e.Category == request.Category);
+                predicate = GetNewExpression(predicate, e => e.Category == request.Category);
             }
 
             if (request.Date is not null)
             {
-                events = events
-                    .Where(e => e.EventTime.Date == request.Date);
+                predicate = GetNewExpression(predicate, e => e.EventTime.Date == request.Date);
             }
 
-            if (!string.IsNullOrEmpty(request.Name))
-            {
-                events = events.Where(e => e.Name.ToLower().Contains(request.Name.ToLower()));
-            }
 
-            events = events
-               .OrderByDescending(e => e.EventTime)
-               .Skip((request.PageNumber - 1) * request.PageSize)
-               .Take(request.PageSize);
+            var events = await _unitOfWork.EventRepository
+                .GetEventsWithPlacesByExpressionAsync(
+                    predicate,
+                    request.PageSize,
+                    request.PageNumber,
+                    cancellationToken);
 
             foreach (var e in events)
             {
@@ -61,7 +59,20 @@ namespace EventsApplication.Application.UseCases.Handlers.Queries.Events
                 }
             }
 
-            return events.ToList();
+            return events;
+        }
+
+        public Expression<Func<T, bool>> GetNewExpression<T>(
+            Expression<Func<T, bool>> predicate,
+            Expression<Func<T, bool>> newPredicate)
+        {
+            var invokedExpression = Expression.Invoke(
+                newPredicate,
+                predicate.Parameters);
+
+            var combinedExpression = Expression.AndAlso(predicate.Body, invokedExpression);
+
+            return Expression.Lambda<Func<T, bool>>(combinedExpression, predicate.Parameters);
         }
     }
 }
