@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EventsApplication.Domain.Models;
 using EventsApplication.Persistence.Entities;
+using System.Linq.Expressions;
 
 namespace EventsApplication.Persistence.Profiles
 {
@@ -19,6 +20,8 @@ namespace EventsApplication.Persistence.Profiles
 
             CreateMap<EventSubscription, EventSubscriptionEntity>()
                 .ReverseMap();
+
+           
         }
     }
 }
